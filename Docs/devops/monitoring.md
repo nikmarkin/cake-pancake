@@ -1,0 +1,1 @@
+![infrastructure-monitoring.drawio.svg](infrastructure-monitoring.drawio.svg)
