@@ -1,7 +1,7 @@
 openapi: 3.0.4
 info:
-  title: Marketplace
-  description: This is a place where sellers and buyers meat each other
+  title: CakePancake
+  description: Это место, где каждый желающий может заказать себе индивидуальный торт
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -10,7 +10,7 @@ servers:
   - url: http://localhost:8080/v1
 tags:
   - name: ad
-    description: Объявление (о покупке или продаже)
+    description: Заказ на изготовление изделия
 paths:
   /ad/create:
     post:
@@ -151,7 +151,7 @@ components:
         propertyName: requestType
         mapping:
           create: '#/components/schemas/AdCreateRequest'
-          read:   '#/components/schemas/AdReadRequest'
+          read: '#/components/schemas/AdReadRequest'
           update: '#/components/schemas/AdUpdateRequest'
           delete: '#/components/schemas/AdDeleteRequest'
           search: '#/components/schemas/AdSearchRequest'
@@ -197,7 +197,7 @@ components:
         propertyName: responseType
         mapping:
           create: '#/components/schemas/AdCreateResponse'
-          read:   '#/components/schemas/AdReadResponse'
+          read: '#/components/schemas/AdReadResponse'
           update: '#/components/schemas/AdUpdateResponse'
           delete: '#/components/schemas/AdDeleteResponse'
           search: '#/components/schemas/AdSearchResponse'
@@ -210,7 +210,7 @@ components:
       description: Идентификатор пользователя
     AdId:
       type: string
-      description: Идентификатор объявления
+      description: Идентификатор Заказа
     AdLock:
       type: string
       description: Версия оптимистичной блокировки
@@ -221,25 +221,18 @@ components:
       properties:
         title:
           type: string
-          description: Заголовок объявления
+          description: Заголовок Заказа
         description:
           type: string
-          description: Описание объявления
-        adType:
-          $ref: '#/components/schemas/DealSide'
+          description: Описание Заказа
         visibility:
           $ref: '#/components/schemas/AdVisibility'
 
-    DealSide:
-      type: string
-      description: 'Сторона сделки: спрос или предложение'
-      enum:
-        - demand
-        - supply
+
 
     AdVisibility:
       type: string
-      description: 'Тип видимости объявления. Возможные значения: видит только владелец, только зарегистрированный в системе пользователь, видимо всем'
+      description: 'Тип видимости Заказа. Возможные значения: видит только владелец, только зарегистрированный в системе пользователь, видимо всем'
       enum:
         - ownerOnly
         - registeredOnly
@@ -321,7 +314,7 @@ components:
       properties:
         searchString:
           type: string
-          description: Поисковая строка, которая будет искаться в объявлениях
+          description: Поисковая строка, которая будет искаться в Заказах
 
     AdSearchRequest:
       allOf:
@@ -376,7 +369,7 @@ components:
     AdResponseSingle:
       allOf:
         - type: object
-          description: Ответ с одним объектом объявления
+          description: Ответ с одним объектом Заказа
           properties:
             ad:
               $ref: '#/components/schemas/AdResponseObject'
