@@ -6,6 +6,7 @@ pluginManagement {
     val kotestVersion: String by settings
     val openapiVersion: String by settings
 
+
     plugins {
         kotlin("jvm") version kotlinVersion
         kotlin("multiplatform") version kotlinVersion apply false
