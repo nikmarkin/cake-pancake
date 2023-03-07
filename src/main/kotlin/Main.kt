@@ -1,19 +1,14 @@
 package cakepancake.api.v1
 
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
+import io.ktor.server.plugins.contentnegotiation.*
 
-fun main() {
-    embeddedServer(Netty, port = 8080, module = Application::cakepancake).start(wait = true)
-}
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-fun Application.cakepancake() {
-    routing {
-        get("/") {
-            call.respondText("Hello, world!")
-        }
+
+fun Application.module() {
+    install(ContentNegotiation) {
+        json()
     }
 }
